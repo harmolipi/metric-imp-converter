@@ -79,6 +79,7 @@ function ConvertHandler() {
       result = initNum / miToKm;
     }
 
+    result = Math.round(result * 100000) / 100000;
     return result;
   };
 
