@@ -22,7 +22,7 @@ function ConvertHandler() {
     const unitIndex = input.search(matchUnit);
 
     let result = input.slice(unitIndex);
-    result = result === 'l' ? 'L' : result;
+    result = result.toLowerCase() === 'l' ? 'L' : result.toLowerCase();
 
     if (validUnits.includes(result)) {
       return result;
