@@ -3,22 +3,18 @@ function ConvertHandler() {
 
   this.getNum = function (input) {
     let result = input.slice(0, input.search(matchUnit));
-    console.log(result);
 
     if (
-      result.includes('/') ||
-      result.includes('*') ||
-      result.includes('+') ||
-      result.includes('-')
+      !result.includes('/') ||
+      result.match(/\//g).length === 1 ||
+      result.match(/\//g).length === 0
     ) {
       result = eval(result);
+    } else {
+      result = 'invalid number';
     }
 
-    if (isNaN(result)) {
-      return 'invalid number';
-    } else {
-      return result;
-    }
+    return result;
   };
 
   this.getUnit = function (input) {
