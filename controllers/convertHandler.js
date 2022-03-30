@@ -1,13 +1,13 @@
 function ConvertHandler() {
   this.getNum = function (input) {
     const matchNumber = /^[0-9]+/;
-    let result = input.match(matchNumber);
+    let result = input.match(matchNumber)[0];
     return result;
   };
 
   this.getUnit = function (input) {
     const matchUnit = /[a-zA-Z]+/;
-    let result = input.match(matchUnit).toLowerCase();
+    let result = input.toLowerCase().match(matchUnit)[0];
     return result;
   };
 
