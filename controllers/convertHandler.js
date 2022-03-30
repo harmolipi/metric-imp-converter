@@ -4,14 +4,14 @@ function ConvertHandler() {
   this.getNum = function (input) {
     let result = input.slice(0, input.search(matchUnit));
 
-    if (
+    if (result === '') {
+      result = 1;
+    } else if (
       !result.includes('/') ||
       result.match(/\//g).length === 1 ||
       result.match(/\//g).length === 0
     ) {
       result = eval(result);
-    } else if (result === '') {
-      result = 1;
     } else {
       result = 'invalid number';
     }
