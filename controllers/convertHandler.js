@@ -1,14 +1,31 @@
 function ConvertHandler() {
+  const matchUnit = /[a-zA-Z]+/;
+
   this.getNum = function (input) {
-    const matchNumber = /^[0-9]+/;
-    let result = input.match(matchNumber)[0];
-    return result;
+    let result = input.slice(0, input.search(matchUnit));
+    console.log(result);
+
+    if (
+      result.includes('/') ||
+      result.includes('*') ||
+      result.includes('+') ||
+      result.includes('-')
+    ) {
+      result = eval(result);
+    }
+
+    if (isNaN(result)) {
+      return 'invalid number';
+    } else {
+      return result;
+    }
   };
 
   this.getUnit = function (input) {
     const validUnits = ['gal', 'L', 'mi', 'km', 'lbs', 'kg'];
-    const matchUnit = /[a-zA-Z]+/;
-    let result = input.toLowerCase().match(matchUnit)[0];
+    const unitIndex = input.search(matchUnit);
+
+    let result = input.slice(unitIndex);
     result = result === 'l' ? 'L' : result;
 
     if (validUnits.includes(result)) {

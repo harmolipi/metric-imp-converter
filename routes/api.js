@@ -18,8 +18,12 @@ module.exports = function (app) {
       returnUnit
     );
 
-    if (initNum === false || initUnit === false) {
-      res.json({ error: 'invalid number or unit' });
+    if (initNum === 'invalid number' && initUnit === 'invalid unit') {
+      res.json('invalid number and unit');
+    } else if (initNum === 'invalid number') {
+      res.json(initNum);
+    } else if (initUnit === 'invalid unit') {
+      res.json(initUnit);
     } else {
       res.json({ initNum, initUnit, returnNum, returnUnit, string });
     }
