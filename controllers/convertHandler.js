@@ -10,6 +10,8 @@ function ConvertHandler() {
       result.match(/\//g).length === 0
     ) {
       result = eval(result);
+    } else if (result === '') {
+      result = 1;
     } else {
       result = 'invalid number';
     }
